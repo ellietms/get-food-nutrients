@@ -7,12 +7,11 @@ function App() {
   const [firstIngredient, setFirstIngredient] = useState();
   const [secondIngredient,setSecondIngredient] = useState();
   const params = {
-    api_key = "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
-    query : `${firstIngredient}`
-
+    api_key : "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
+    query : `${firstIngredient}`&`${secondIngredient}`,
   }
   useEffect(() => {
-
+    fetch()
   }, [])
 
   return (
