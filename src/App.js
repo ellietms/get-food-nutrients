@@ -4,10 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 function App() {
- const [data,setData] = useState();
- useEffect(() => {
-   fetch()
- }, [data])
+ 
   return (
     <div className="pageContainer">
     <TakeIngredients />
