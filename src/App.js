@@ -10,7 +10,6 @@ function App() {
   const params = {
     api_key: "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
     query: `${firstIngredient}&${secondIngredient}`,
-    // eslint-disable-next-line
     dataType: ["Survey (FNDDS)"],
   };
 
