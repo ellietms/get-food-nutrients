@@ -10,16 +10,20 @@ function App() {
   const params = {
     api_key: "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
     query: `${firstIngredient}&${secondIngredient}`,
+    // eslint-disable-next-line
     dataType: ["Survey (FNDDS)"],
   };
-  
+
   useEffect(() => {
-      fetch(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIComponent(params.api_key)}&query=${params.query}&dataType=${encodeURIComponent(params.dataType)}`
-      )
-        .then(response => setData(response.json()))
-        .then(console.log("NEW DATA", data));
-  }, [firstIngredient,secondIngredient]);
+    fetch(
+      `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIComponent(
+        params.api_key
+      )}&query=${params.query}&dataType=${encodeURIComponent(params.dataType)}`
+    )
+      .then((response) => {setData(response.json());console.log("Data",data)})
+      .then(console.log("NEW DATA", data));
+    // eslint-disable-next-line
+  }, [firstIngredient, secondIngredient]);
   const updateFirstIngredient = (event) => {
     setFirstIngredient(event.target.value);
   };
