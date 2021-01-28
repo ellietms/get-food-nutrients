@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
 function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}) {
@@ -11,7 +11,7 @@ function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}
                 <div className="card-body">
                   <h5 className="card-title">{eachFood.description}</h5>
                   <p className="card-text">{eachFood.additionalDescriptions}</p>
-                   <button type="button"  className="linkButton" onClick={() => {setShowInfo("showInfo");setChosenIngredient(eachFood)}}>Info</button>
+                   <button type="button"  className="linkButton" onClick={() => {setShowInfo("showInfo");setChosenIngredient(eachFood)}}>Food Info</button>
                 </div>
               </div>
             );
@@ -20,7 +20,7 @@ function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}
   }
   else{
       pageContents = (
-          "Sorry We do not have any Ingredients"
+          "Sorry We do not have any food like this :)"
       )
   } 
   return (

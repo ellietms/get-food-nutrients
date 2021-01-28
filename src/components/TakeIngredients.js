@@ -15,7 +15,7 @@ function TakeIngredients({
           <br />
           <input
             type="text"
-            onChange={(event) => {updateFirstIngredient(event);console.log(event.target.value)}}
+            onChange={(event) => {updateFirstIngredient(event)}}
             value={firstIngredient}
             id="firstIngredient"
           />
@@ -24,7 +24,7 @@ function TakeIngredients({
           <br />
           <input
             type="text"
-            onChange={(event) => {updateSecondIngredient(event);console.log(event.target.value)}}
+            onChange={(event) => {updateSecondIngredient(event)}}
             value={secondIngredient}
             id="secondIngredient"
           />
