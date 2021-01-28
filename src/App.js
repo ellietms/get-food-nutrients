@@ -15,7 +15,7 @@ function App() {
     api_key: "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
     query: `${firstIngredient}&${secondIngredient}`,
     dataType: ["Survey (FNDDS)"],
-    pagesize: 15,
+    pagesize: 20,
   };
   console.log("Data", data);
   useEffect(() => {
