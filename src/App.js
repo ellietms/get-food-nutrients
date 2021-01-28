@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TakeIngredients from "./components/TakeIngredients";
 import IngredientsCards from "./components/IngredientsCards";
-import ShowInfoIngredient from "./components/ShowInfoIngredient";
+import IngredientInfo from "./components/IngredientInfo";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
   }
   else if(showInfo === "showInfo"){
     mainPage = (
-          <ShowInfoIngredient 
+          <IngredientInfo 
           chosenIngredient = {chosenIngredient}
           back = {() => back()}/>
       )

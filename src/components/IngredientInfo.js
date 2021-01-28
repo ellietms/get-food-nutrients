@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 
 
-function ShowInfoIngredient ({chosenIngredient,back}) {
+function IngredientInfo ({chosenIngredient,back}) {
     return(
         <div>
             <button onClick={() => back()}>Back</button>
@@ -12,4 +12,4 @@ function ShowInfoIngredient ({chosenIngredient,back}) {
 }
 
 
-export default ShowInfoIngredient;
+export default IngredientInfo;
