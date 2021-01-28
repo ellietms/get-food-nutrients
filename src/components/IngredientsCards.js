@@ -1,14 +1,8 @@
 import React , {useState} from "react";
-import ShowInfoIngredient from "./ShowInfoIngredient";
 import "bootstrap/dist/css/bootstrap.css";
 
-function ShowIngredients({ data }) {
+function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}) {
   let pageContents;
-  const [showInfo,setShowInfo] = useState("currentPage");
-  const [chosenIngredient,setChosenIngredient] = useState();
-  function back(){
-      setShowInfo("currentPage");
-  }
   if(showInfo === "currentPage"){
       pageContents = (
         data.foods.map((eachFood) => {
@@ -24,13 +18,6 @@ function ShowIngredients({ data }) {
           })
       )
   }
-  else if(showInfo === "showInfo"){
-    pageContents = (
-        <ShowInfoIngredient 
-        chosenIngredient = {chosenIngredient}
-        back = {() => back()}/>
-    )
-  }
   else{
       pageContents = (
           "Sorry We do not have any Ingredients"
@@ -43,4 +30,4 @@ function ShowIngredients({ data }) {
   );
 }
 
-export default ShowIngredients;
+export default IngredientsCards;

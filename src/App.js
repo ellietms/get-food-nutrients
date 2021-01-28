@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TakeIngredients from "./components/TakeIngredients";
-import ShowIngredients from "./components/ShowIngredients";
+import IngredientsCards from "./components/IngredientsCards";
+import ShowInfoIngredient from "./components/ShowInfoIngredient";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -8,22 +9,28 @@ function App() {
   const [data, setData] = useState();
   const [firstIngredient, setFirstIngredient] = useState();
   const [secondIngredient, setSecondIngredient] = useState();
+  const [chosenIngredient,setChosenIngredient] = useState();
+  const [showInfo,setShowInfo] = useState("currentPage");
   const params = {
     api_key: "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
     query: `${firstIngredient}&${secondIngredient}`,
     dataType: ["Survey (FNDDS)"],
-    pagesize : 15
+    pagesize: 15,
   };
-  console.log("Data",data);
+  console.log("Data", data);
   useEffect(() => {
     fetch(
       `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIComponent(
         params.api_key
-      )}&query=${encodeURIComponent(params.query)}&dataType=${encodeURIComponent(params.dataType)}&pageSize=${encodeURIComponent(params.pagesize)}`
+      )}&query=${encodeURIComponent(
+        params.query
+      )}&dataType=${encodeURIComponent(
+        params.dataType
+      )}&pageSize=${encodeURIComponent(params.pagesize)}`
     )
-      .then(response => response.json())
-      .then(newData => setData(newData))
-      .catch((error) => console.log("THIS IS THE ERROR",error))
+       .then((response) => response.json())
+       .then((newData) => setData(newData))
+       .catch((error) => {throw new Error (error)});
     // eslint-disable-next-line
   }, [firstIngredient, secondIngredient]);
   const updateFirstIngredient = (event) => {
@@ -32,36 +39,48 @@ function App() {
   const updateSecondIngredient = (event) => {
     setSecondIngredient(event.target.value);
   };
-  if(data !== undefined){
+  function back(){
+    setShowInfo("currentPage");
+}
+  if (data !== undefined && showInfo === "currentPage") {
     mainPage = (
       <div className="pageContainer">
-      <TakeIngredients
-        firstIngredient={firstIngredient}
-        secondIngredient={secondIngredient}
-        updateFirstIngredient={updateFirstIngredient}
-        updateSecondIngredient={updateSecondIngredient}
-      />
-      <ShowIngredients data={data}/>
-    </div>
-    )
+        <TakeIngredients
+          firstIngredient={firstIngredient}
+          secondIngredient={secondIngredient}
+          updateFirstIngredient={updateFirstIngredient}
+          updateSecondIngredient={updateSecondIngredient}
+        />
+        <IngredientsCards 
+        data={data}
+        showInfo = {showInfo}
+        setShowInfo = {setShowInfo}
+        setChosenIngredient={setChosenIngredient}
+        />
+      </div>
+    );
   }
+  else if(showInfo === "showInfo"){
+    mainPage = (
+          <ShowInfoIngredient 
+          chosenIngredient = {chosenIngredient}
+          back = {() => back()}/>
+      )
+  }
+  
   else {
     mainPage = (
-    <div className="pageContainer">
-    <TakeIngredients
-      firstIngredient={firstIngredient}
-      secondIngredient={secondIngredient}
-      updateFirstIngredient={updateFirstIngredient}
-      updateSecondIngredient={updateSecondIngredient}
-    />
-    </div>
-    )
+      <div className="pageContainer">
+        <TakeIngredients
+          firstIngredient={firstIngredient}
+          secondIngredient={secondIngredient}
+          updateFirstIngredient={updateFirstIngredient}
+          updateSecondIngredient={updateSecondIngredient}
+        />
+      </div>
+    );
   }
-  return (
-    <div>
-    {mainPage}
-    </div>
-  );
+  return <div>{mainPage}</div>;
 }
 
 export default App;
