@@ -44,7 +44,7 @@ function App() {
 }
   if (data !== undefined && showInfo === "currentPage") {
     mainPage = (
-      <div className="pageContainer">
+      <div className="container">
         <TakeIngredients
           firstIngredient={firstIngredient}
           secondIngredient={secondIngredient}
@@ -70,13 +70,15 @@ function App() {
   
   else {
     mainPage = (
-      <div className="pageContainer">
+      <div className="container">
+          <div className="col-12">
         <TakeIngredients
           firstIngredient={firstIngredient}
           secondIngredient={secondIngredient}
           updateFirstIngredient={updateFirstIngredient}
           updateSecondIngredient={updateSecondIngredient}
         />
+      </div>
       </div>
     );
   }

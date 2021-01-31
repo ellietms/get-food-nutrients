@@ -7,12 +7,16 @@ function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}
       pageContents = (
         data.foods.map((eachFood) => {
             return (
+              <div className="container"> 
+              <div className="cardContainer">
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{eachFood.description}</h5>
                   <p className="card-text"><strong>Score :{Math.floor((eachFood.score) / 5)}%</strong></p>
                    <button type="button"  className="linkButton" onClick={() => {setShowInfo("showInfo");setChosenIngredient(eachFood)}}>Food Info</button>
                 </div>
+              </div>
+              </div>
               </div>
             );
           })
