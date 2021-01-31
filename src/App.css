@@ -1,0 +1,42 @@
+body{
+    background-image: url("https://biona.co.uk/wp-content/uploads/2018/11/blog-image-.jpg");
+}
+
+.card{
+    text-align: center;
+    width:50%;
+    margin:auto auto;
+    border:2px green double;
+    background-color: black;
+    color: white;
+    font-family: 'Libre Baskerville', serif;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.takeIngredient{
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.inputIngredient{
+    width: 30%;
+}
+
+.ingredientContainer{
+    display: flex;
+    justify-content:space-between;
+    margin-top:50px;
+    border: 2px double green;
+    padding: 15px 6px;
+    margin-bottom: 50px;
+    background-color: rgb(26, 22, 22);
+    color:white;
+}
+
+.linkButton{
+    font-family: 'Libre Baskerville', serif;
+    border: green solid 5px;
+    padding: 5px 5px;
+    border-radius: 10px;
+}

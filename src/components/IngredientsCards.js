@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import "../App.css";
 
 function IngredientsCards({ data , showInfo , setShowInfo , setChosenIngredient}) {
   let pageContents;
