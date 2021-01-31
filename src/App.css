@@ -40,3 +40,7 @@ body{
     padding: 5px 5px;
     border-radius: 10px;
 }
+
+.linkButton:hover{
+    color: gray;
+}

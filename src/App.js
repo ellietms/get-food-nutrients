@@ -9,8 +9,8 @@ function App() {
   const [data, setData] = useState();
   const [firstIngredient, setFirstIngredient] = useState();
   const [secondIngredient, setSecondIngredient] = useState();
-  const [chosenIngredient,setChosenIngredient] = useState();
-  const [showInfo,setShowInfo] = useState("currentPage");
+  const [chosenIngredient, setChosenIngredient] = useState();
+  const [showInfo, setShowInfo] = useState("currentPage");
   const params = {
     api_key: "UOH8WmlDML1ysY4YsLLc5QVwbT6ogaJZTV5Cj2ih",
     query: `${firstIngredient}&${secondIngredient}`,
@@ -28,9 +28,11 @@ function App() {
         params.dataType
       )}&pageSize=${encodeURIComponent(params.pagesize)}`
     )
-       .then((response) => response.json())
-       .then((newData) => setData(newData))
-       .catch((error) => {throw new Error (error)});
+      .then((response) => response.json())
+      .then((newData) => setData(newData))
+      .catch((error) => {
+        throw new Error(error);
+      });
     // eslint-disable-next-line
   }, [firstIngredient, secondIngredient]);
   const updateFirstIngredient = (event) => {
@@ -39,9 +41,9 @@ function App() {
   const updateSecondIngredient = (event) => {
     setSecondIngredient(event.target.value);
   };
-  function back(){
+  function back() {
     setShowInfo("currentPage");
-}
+  }
   if (data !== undefined && showInfo === "currentPage") {
     mainPage = (
       <div className="container">
@@ -51,34 +53,29 @@ function App() {
           updateFirstIngredient={updateFirstIngredient}
           updateSecondIngredient={updateSecondIngredient}
         />
-        <IngredientsCards 
-        data={data}
-        showInfo = {showInfo}
-        setShowInfo = {setShowInfo}
-        setChosenIngredient={setChosenIngredient}
+        <IngredientsCards
+          data={data}
+          showInfo={showInfo}
+          setShowInfo={setShowInfo}
+          setChosenIngredient={setChosenIngredient}
         />
       </div>
     );
-  }
-  else if(showInfo === "showInfo"){
+  } else if (showInfo === "showInfo") {
     mainPage = (
-          <IngredientInfo 
-          chosenIngredient = {chosenIngredient}
-          back = {() => back()}/>
-      )
-  }
-  
-  else {
+      <IngredientInfo chosenIngredient={chosenIngredient} back={() => back()} />
+    );
+  } else {
     mainPage = (
       <div className="container">
-          <div className="col-12">
-        <TakeIngredients
-          firstIngredient={firstIngredient}
-          secondIngredient={secondIngredient}
-          updateFirstIngredient={updateFirstIngredient}
-          updateSecondIngredient={updateSecondIngredient}
-        />
-      </div>
+        <div className="col-12">
+          <TakeIngredients
+            firstIngredient={firstIngredient}
+            secondIngredient={secondIngredient}
+            updateFirstIngredient={updateFirstIngredient}
+            updateSecondIngredient={updateSecondIngredient}
+          />
+        </div>
       </div>
     );
   }

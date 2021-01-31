@@ -12,19 +12,27 @@ function TakeIngredients({
     <div className="container">
       <div className="row">
         <div className="col-12 ingredientContainer">
-          <label for="firstIngredient" className="takeIngredient">First-Ingredient:</label>
+          <label for="firstIngredient" className="takeIngredient">
+            First-Ingredient:
+          </label>
           <input
             type="text"
-            onChange={(event) => {updateFirstIngredient(event)}}
+            onChange={(event) => {
+              updateFirstIngredient(event);
+            }}
             value={firstIngredient}
             id="firstIngredient"
             className="inputIngredient"
           />
           <br />
-          <label for="secondIngredient" className="takeIngredient">Second-Ingredient : </label>
+          <label for="secondIngredient" className="takeIngredient">
+            Second-Ingredient :{" "}
+          </label>
           <input
             type="text"
-            onChange={(event) => {updateSecondIngredient(event)}}
+            onChange={(event) => {
+              updateSecondIngredient(event);
+            }}
             value={secondIngredient}
             id="secondIngredient"
             className="inputIngredient"
